@@ -1,0 +1,53 @@
+[package]
+name = "cargo-unc"
+version = "0.1.0"
+authors = ["Hello Inc <hello@unc.com>"]
+edition = "2021"
+rust-version = "1.72.0"
+description = "Cargo extension for building Rust smart contracts on UNC"
+readme = "README.md"
+repository = "https://github.com/unc/cargo-unc"
+license = "MIT OR Apache-2.0"
+keywords = ["cargo", "unc", "contract", "abi", "build"]
+categories = ["development-tools", "development-tools::cargo-plugins", "development-tools::build-utils", "command-line-utilities"]
+
+[package.metadata.wix]
+upgrade-guid = "FFBAE83D-C3FA-45DD-9F19-C8F312E905C5"
+path-guid = "4A9FB601-2F10-48F8-BBC0-B467169D6BAD"
+license = false
+eula = false
+
+[dependencies]
+bs58 = "0.4"
+camino = "1.1.1"
+cargo_metadata = "0.14"
+clap = { version = "4.0.18", features = ["derive", "env"] }
+colored = "2.0"
+env_logger = "0.9"
+log = "0.4"
+rustc_version = "0.4"
+serde_json = "1.0"
+sha2 = "0.10"
+symbolic-debuginfo = "8.8"
+schemars = "0.8"
+unc-abi = { version = "0.1.0", features = ["__chunked-entries"] }
+libloading = "0.7.3"
+zstd = "0.11"
+atty = "0.2.14"
+
+color-eyre = "0.6"
+inquire = "0.6"
+strum = { version = "0.24", features = ["derive"] }
+strum_macros = "0.24"
+linked-hash-map = { version = "0.5", features = ["serde_impl"] }
+names = { version = "0.14.0", default-features = false }
+derive_more = "0.99.9"
+shell-words = "1.0.0"
+interactive-clap = "0.2.8"
+interactive-clap-derive = "0.2.8"
+unc-cli-rs = { version = "0.1.0", default-features = false }
+dunce = "1"
+
+[features]
+default = ["ledger"]
+ledger = ["unc-cli-rs/ledger"]
